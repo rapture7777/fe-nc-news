@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import './css/Router.css';
-import { Router } from '@reach/router';
 import Login from './components/Login';
 import TopBar from './components/TopBar';
 import Carousel from './components/Carousel';
