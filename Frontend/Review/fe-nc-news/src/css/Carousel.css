@@ -1,0 +1,12 @@
+.Carousel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.Carousel img {
+  align-content: center;
+  align-self: center;
+  max-height: 100px;
+}

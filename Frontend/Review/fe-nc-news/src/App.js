@@ -3,11 +3,12 @@ import './css/App.css';
 import { Router } from '@reach/router';
 import Login from './components/Login';
 import TopBar from './components/TopBar';
+import Carousel from './components/Carousel';
 
 class App extends Component {
   state = {
-    username: '',
-    loggedIn: false
+    username: 'grumpy19',
+    loggedIn: true
   };
 
   loginSuccessful = username => {
@@ -22,9 +23,10 @@ class App extends Component {
         {!loggedIn ? (
           <Login className="TopWindow" loginSuccessful={this.loginSuccessful} />
         ) : (
-          <h1>Welcome to NC News!</h1>
+          <Router>
+            <Carousel path="/" className="TopWindow" />
+          </Router>
         )}
-        ;
       </main>
     );
   }

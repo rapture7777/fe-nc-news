@@ -12,7 +12,7 @@
   align-content: center;
 }
 
-img {
+.TopBar img {
   align-self: center;
   max-height: 25px;
 }

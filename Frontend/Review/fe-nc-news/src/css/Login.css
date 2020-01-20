@@ -5,19 +5,19 @@
   align-content: center;
 }
 
-label {
+.Login label {
   align-self: center;
 }
 
-p {
+.Login p {
   text-align: center;
   margin: 0 0 0 0;
 }
 
-input {
+.Login input {
   align-items: center;
 }
 
-h3 {
+.Login h3 {
   text-align: center;
 }
