@@ -1,0 +1,15 @@
+.Router {
+  display: grid;
+  grid-template-rows: 150px 1fr;
+  grid-template-areas:
+    'TopWindow'
+    'ArticlesList';
+}
+
+.TopWindow {
+  grid-area: TopWindow;
+}
+
+.ArticlesList {
+  grid-area: ArticlesList;
+}

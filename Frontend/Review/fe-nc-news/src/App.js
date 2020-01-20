@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './css/App.css';
+import './css/Router.css';
 import { Router } from '@reach/router';
 import Login from './components/Login';
 import TopBar from './components/TopBar';
 import Carousel from './components/Carousel';
+import Articles from './components/Articles';
 
 class App extends Component {
   state = {
@@ -21,11 +23,12 @@ class App extends Component {
       <main className="App">
         <TopBar username={username} loggedIn={loggedIn} />
         {!loggedIn ? (
-          <Login className="TopWindow" loginSuccessful={this.loginSuccessful} />
+          <Login className="Router" loginSuccessful={this.loginSuccessful} />
         ) : (
-          <Router>
-            <Carousel path="/" className="TopWindow" />
-          </Router>
+          <>
+            <Carousel className="TopWindow" />
+            <Articles className="MainList" />
+          </>
         )}
       </main>
     );

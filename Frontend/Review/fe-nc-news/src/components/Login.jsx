@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Login.css';
-import axios from 'axios';
+import * as api from '../utils/api.js';
 
 class Login extends Component {
   state = {
@@ -19,17 +19,15 @@ class Login extends Component {
     event.preventDefault();
     const { username } = this.state;
     const { loginSuccessful } = this.props;
-    axios
-      .get('https://nc-news-asv.herokuapp.com/api/users')
-      .then(({ data: { users } }) => {
-        const usernameArr = users.map(user => user.username);
-        if (usernameArr.includes(username)) {
-          this.setState({ invalidUsername: false });
-          loginSuccessful(username);
-        } else {
-          this.setState({ invalidUsername: true });
-        }
-      });
+    api.fetchUsers().then(({ data: { users } }) => {
+      const usernameArr = users.map(user => user.username);
+      if (usernameArr.includes(username)) {
+        this.setState({ invalidUsername: false });
+        loginSuccessful(username);
+      } else {
+        this.setState({ invalidUsername: true });
+      }
+    });
   };
 
   render() {

@@ -1,0 +1,25 @@
+.ArticlePreview {
+  font-size: x-small;
+  display: grid;
+  grid-template-columns: 20vw 80vw;
+  grid-template-rows: 30px 20px;
+  grid-template-areas:
+    'Votes Title'
+    'Votes Info';
+  padding-bottom: 10px;
+  border: 1px solid black;
+}
+
+.Votes {
+  grid-area: Votes;
+}
+
+.Title {
+  grid-area: Title;
+  text-align: left;
+}
+
+.Info {
+  grid-area: Info;
+  text-align: left;
+}
