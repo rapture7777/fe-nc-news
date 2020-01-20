@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './css/App.css';
+import { Router } from '@reach/router';
+import Login from './components/Login';
+import TopBar from './components/TopBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    username: '',
+    loggedIn: false
+  };
+
+  loginSuccessful = username => {
+    this.setState({ username: username, loggedIn: true });
+  };
+
+  render() {
+    const { loggedIn } = this.state;
+    return (
+      <main className="App">
+        <TopBar />
+        {!loggedIn && (
+          <Login className="TopWindow" loginSuccessful={this.loginSuccessful} />
+        )}
+        ;
+      </main>
+    );
+  }
 }
 
 export default App;

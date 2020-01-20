@@ -1,0 +1,26 @@
+.App {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 50px 25vh 70vh 100px;
+  grid-template-areas:
+    'TopBar'
+    'TopWindow'
+    'MainList'
+    'PageBar';
+}
+
+.TopBar {
+  grid-area: TopBar;
+}
+
+.TopWindow {
+  grid-area: TopWindow;
+}
+
+.MainList {
+  grid-area: MainList;
+}
+
+.PageBar {
+  grid-area: PageBar;
+}

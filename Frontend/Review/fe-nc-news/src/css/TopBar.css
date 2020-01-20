@@ -1,0 +1,27 @@
+.TopBar {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  grid-template-areas: 'Logo Mid Links';
+}
+
+.Logo {
+  grid-area: Logo;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+img {
+  align-self: center;
+  max-height: 25px;
+}
+
+.Middle {
+  grid-area: Mid;
+}
+
+.Links {
+  grid-area: Links;
+  align-content: center;
+}
