@@ -1,7 +1,7 @@
 .TopBar {
   display: grid;
   grid-template-columns: 100px 1fr 100px;
-  grid-template-areas: 'Logo Mid Links';
+  grid-template-areas: 'Logo Mid User';
 }
 
 .Logo {
@@ -21,7 +21,10 @@ img {
   grid-area: Mid;
 }
 
-.Links {
-  grid-area: Links;
-  align-content: center;
+.User {
+  grid-area: User;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }

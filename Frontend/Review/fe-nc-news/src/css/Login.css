@@ -11,8 +11,13 @@ label {
 
 p {
   text-align: center;
+  margin: 0 0 0 0;
 }
 
 input {
   align-items: center;
+}
+
+h3 {
+  text-align: center;
 }

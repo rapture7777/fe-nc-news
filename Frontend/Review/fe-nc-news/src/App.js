@@ -15,12 +15,14 @@ class App extends Component {
   };
 
   render() {
-    const { loggedIn } = this.state;
+    const { username, loggedIn } = this.state;
     return (
       <main className="App">
-        <TopBar />
-        {!loggedIn && (
+        <TopBar username={username} loggedIn={loggedIn} />
+        {!loggedIn ? (
           <Login className="TopWindow" loginSuccessful={this.loginSuccessful} />
+        ) : (
+          <h1>Welcome to NC News!</h1>
         )}
         ;
       </main>
