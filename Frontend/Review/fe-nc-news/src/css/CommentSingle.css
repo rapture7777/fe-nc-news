@@ -1,0 +1,30 @@
+.CommentSingle {
+  font-size: x-small;
+  display: grid;
+  grid-template-columns: 20vw 80vw;
+  grid-template-rows: 30px 20px 20px;
+  grid-template-areas:
+    'Votes Body'
+    'Votes Body'
+    'Delete Info';
+  padding-bottom: 10px;
+  border: 1px solid black;
+}
+
+.Votes {
+  grid-area: Votes;
+}
+
+.Body {
+  grid-area: Body;
+  text-align: left;
+}
+
+.Info {
+  grid-area: Info;
+  text-align: left;
+}
+
+.Delete {
+  grid-area: Delete;
+}

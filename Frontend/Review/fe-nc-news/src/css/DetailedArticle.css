@@ -1,0 +1,44 @@
+.DetailedArticle {
+  display: grid;
+  font-size: xx-small;
+  grid-template-columns: 80px 1fr;
+  grid-template-rows: 30px 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    'Votes Title'
+    'Votes Body'
+    'Topic Body'
+    'Author Body'
+    'CreatedAt Body'
+    'Delete Body';
+  border: 1px solid black;
+}
+
+.Votes {
+  grid-area: Votes;
+}
+
+.Title {
+  grid-area: Title;
+}
+
+.Body {
+  grid-area: Body;
+  font-size: xx-small;
+  padding-right: 10px;
+}
+
+.Topic {
+  grid-area: Topic;
+}
+
+.Author {
+  grid-area: Author;
+}
+
+.CreateAt {
+  grid-area: CreateAt;
+}
+
+.Delete {
+  grid-area: Delete;
+}

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './css/App.css';
+import { Router } from '@reach/router';
 import Login from './components/Login';
 import TopBar from './components/TopBar';
 import Carousel from './components/Carousel';
 import Articles from './components/Articles';
+import DetailedArticle from './components/DetailedArticle';
+import Comments from './components/Comments';
 
 class App extends Component {
   state = {
@@ -24,8 +27,17 @@ class App extends Component {
           <Login className="Router" loginSuccessful={this.loginSuccessful} />
         ) : (
           <>
-            <Carousel className="TopWindow" />
             <Articles className="MainList" />
+            <Router className="TopWindow">
+              <Carousel path="/" className="TopWindow" />
+              <DetailedArticle
+                path="/articles/:article_id"
+                className="TopWindow"
+              />
+            </Router>
+            <Router className="MainList">
+              <Comments path="/articles/:article_id" className="MainList" />
+            </Router>
           </>
         )}
       </main>

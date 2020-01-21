@@ -1,0 +1,28 @@
+.Comments {
+  display: grid;
+  grid-template-rows: 50px auto 100px 50px;
+  grid-template-areas:
+    'Filters'
+    'CommentSingle'
+    'Post'
+    'PageBar';
+}
+
+.Filters {
+  grid-area: Filters;
+}
+
+.CommentSingle {
+  grid-area: CommentSingle;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Post {
+  grid-area: Post;
+}
+
+.PageBar {
+  grid-area: PageBar;
+}

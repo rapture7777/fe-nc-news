@@ -7,3 +7,15 @@ exports.fetchUsers = () => {
 exports.fetchArticles = params => {
   return axios.get('https://nc-news-asv.herokuapp.com/api/articles', params);
 };
+
+exports.fetchDetailedArticle = article_id => {
+  return axios.get(
+    `https://nc-news-asv.herokuapp.com/api/articles/${article_id}`
+  );
+};
+
+exports.fetchComments = article_id => {
+  return axios.get(
+    `https://nc-news-asv.herokuapp.com/api/articles/${article_id}/comments`
+  );
+};
