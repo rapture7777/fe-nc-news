@@ -11,7 +11,7 @@ class Comments extends Component {
 
   componentDidMount() {
     const { article_id } = this.props;
-    api.fetchComments({ article_id }).then(({ data: { comments } }) => {
+    api.fetchComments(article_id).then(({ data: { comments } }) => {
       this.setState({ commentsData: comments });
     });
   }
@@ -30,7 +30,9 @@ class Comments extends Component {
     return (
       <section className="Comments">
         <Filters className="Filters" />
-        <CommentSingle className="CommentSingle" commentsData={commentsData} />
+        <section className="CommentSm">
+          <CommentSingle commentsData={commentsData} />
+        </section>
       </section>
     );
   }

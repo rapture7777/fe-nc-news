@@ -3,7 +3,7 @@
   grid-template-rows: 50px auto 100px 50px;
   grid-template-areas:
     'Filters'
-    'CommentSingle'
+    'CommentSm'
     'Post'
     'PageBar';
 }
@@ -12,8 +12,8 @@
   grid-area: Filters;
 }
 
-.CommentSingle {
-  grid-area: CommentSingle;
+.CommentSm {
+  grid-area: CommentSm;
   display: flex;
   flex-direction: column;
   justify-content: center;

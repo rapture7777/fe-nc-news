@@ -27,7 +27,6 @@ class App extends Component {
           <Login className="Router" loginSuccessful={this.loginSuccessful} />
         ) : (
           <>
-            <Articles className="MainList" />
             <Router className="TopWindow">
               <Carousel path="/" className="TopWindow" />
               <DetailedArticle
@@ -36,6 +35,7 @@ class App extends Component {
               />
             </Router>
             <Router className="MainList">
+              <Articles path="/" className="MainList" />
               <Comments path="/articles/:article_id" className="MainList" />
             </Router>
           </>
