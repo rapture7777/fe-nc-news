@@ -1,20 +1,27 @@
 import React from 'react';
 import '../css/ArticlesSm.css';
 import { Link } from '@reach/router';
+import Vote from './Vote';
 
 const ArticlesSm = ({ articles }) => {
   return articles.map(function(article) {
+    const { article_id, title, topic, author, created_at, votes } = article;
     return (
-      <section className="ArticlePreview" key={article.article_id}>
-        <Link to={`/articles/${article.article_id}`}>
+      <section className="ArticlePreview" key={article_id}>
+        <Link to={`/articles/${article_id}`}>
           <b>
-            <p className="Title">{article.title}</p>
+            <p className="Title">{title}</p>
           </b>
         </Link>
         <p className="Info">
-          {article.topic} - {article.author} - {article.created_at}
+          {topic} - {author} - {created_at}
         </p>
-        <p className="Votes">{article.votes}</p>
+        <Vote
+          name="articleVote"
+          className="Votes"
+          votes={votes}
+          id={article_id}
+        />
       </section>
     );
   });

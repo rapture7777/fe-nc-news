@@ -1,0 +1,11 @@
+.Votes {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.Votes p {
+  margin: 0;
+}

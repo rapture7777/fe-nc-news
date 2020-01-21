@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import ArticlesSm from './ArticlesSm';
 import PageBar from './PageBar';
 import Filters from './Filters';
+import PostArticle from './PostArticle';
 
 class Articles extends Component {
   state = {
@@ -43,7 +44,9 @@ class Articles extends Component {
         <section className="ArticlesSm">
           <ArticlesSm articles={articles} />
         </section>
-        <p className="Post">Post</p>
+        <section className="Post">
+          <PostArticle className="Post" />
+        </section>
         <PageBar />
       </main>
     );

@@ -1,7 +1,7 @@
 .CommentSingle {
   font-size: x-small;
   display: grid;
-  grid-template-columns: 20vw 80vw;
+  grid-template-columns: 10vw 90vw;
   grid-template-rows: 30px auto auto;
   grid-template-areas:
     'Votes Body'

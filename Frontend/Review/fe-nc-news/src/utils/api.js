@@ -35,3 +35,17 @@ exports.deleteComment = comment_id => {
     `https://nc-news-asv.herokuapp.com/api/comments/${comment_id}`
   );
 };
+
+exports.voteOnComment = (comment_id, num) => {
+  return axios.patch(
+    `https://nc-news-asv.herokuapp.com/api/comments/${comment_id}`,
+    { inc_votes: num }
+  );
+};
+
+exports.voteOnArticle = (article_id, num) => {
+  return axios.patch(
+    `https://nc-news-asv.herokuapp.com/api/articles/${article_id}`,
+    { inc_votes: num }
+  );
+};

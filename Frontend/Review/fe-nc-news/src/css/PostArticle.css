@@ -1,0 +1,41 @@
+.PostArticle {
+  display: grid;
+  grid-template-columns: 50vw 50vw;
+  grid-template-rows: 20px 1fr 2fr 1fr;
+  grid-template-areas:
+    'Header Header'
+    'Title Topic'
+    'Body Body'
+    'Submit Submit';
+}
+
+.Header {
+  grid-area: Header;
+  margin: 0;
+  justify-self: center;
+}
+
+.Title {
+  grid-area: Title;
+}
+
+.Title input {
+  border: 1px solid black;
+}
+
+.Topic {
+  grid-area: Topic;
+}
+
+.Topic select {
+  border: 1px solid black;
+}
+
+.Body {
+  grid-area: Body;
+}
+
+.Submit {
+  grid-area: Submit;
+  align-self: center;
+}

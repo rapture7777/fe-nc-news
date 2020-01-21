@@ -13,9 +13,9 @@ const Filters = ({ handleArticlesChange }) => {
       Sort-by:{' '}
       <select id="sort_by" onChange={handleArticlesChange}>
         <option value=""></option>
-        <option value="created_at">Creation Date</option>
+        <option value="created_at">Most Recent</option>
         <option value="comment_count">Most Commented</option>
-        <option value="votes">Votes</option>
+        <option value="votes">Most Popular</option>
       </select>
     </section>
   );

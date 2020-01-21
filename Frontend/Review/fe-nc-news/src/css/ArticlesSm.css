@@ -12,6 +12,7 @@
 
 .Votes {
   grid-area: Votes;
+  align-content: center;
 }
 
 .Title {

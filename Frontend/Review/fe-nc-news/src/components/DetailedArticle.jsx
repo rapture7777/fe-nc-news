@@ -1,6 +1,7 @@
 import '../css/DetailedArticle.css';
 import React, { Component } from 'react';
 import * as api from '../utils/api';
+import Vote from './Vote';
 
 class DetailedArticle extends Component {
   state = {
@@ -25,7 +26,7 @@ class DetailedArticle extends Component {
 
   render() {
     const {
-      articleData: { title, body, votes, topic, author, created_at }
+      articleData: { article_id, title, body, votes, topic, author, created_at }
     } = this.state;
     const { username } = this.props;
     return (
@@ -33,7 +34,12 @@ class DetailedArticle extends Component {
         <p className="Title">
           <b>{title}</b>
         </p>
-        <p className="Votes">{votes}</p>
+        <Vote
+          name="articleVote"
+          className="Votes"
+          votes={votes}
+          id={article_id}
+        />
         <p className="Body">{body}</p>
         <p className="Topic">{topic}</p>
         <p className="Author">{author}</p>
