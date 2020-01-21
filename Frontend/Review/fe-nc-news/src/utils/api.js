@@ -16,7 +16,7 @@ exports.fetchDetailedArticle = article_id => {
 
 exports.fetchComments = article_id => {
   return axios.get(
-    `https://nc-news-asv.herokuapp.com/api/articles/${article_id}/comments`
+    `https://nc-news-asv.herokuapp.com/api/articles/${article_id}/comments?sort_by=votes`
   );
 };
 
@@ -27,5 +27,11 @@ exports.postComment = (article_id, username, body) => {
       username: username,
       body: body
     }
+  );
+};
+
+exports.deleteComment = comment_id => {
+  return axios.delete(
+    `https://nc-news-asv.herokuapp.com/api/comments/${comment_id}`
   );
 };

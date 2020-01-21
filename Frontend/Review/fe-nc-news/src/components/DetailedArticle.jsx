@@ -27,6 +27,7 @@ class DetailedArticle extends Component {
     const {
       articleData: { title, body, votes, topic, author, created_at }
     } = this.state;
+    const { username } = this.props;
     return (
       <section className="DetailedArticle">
         <p className="Title">
@@ -37,7 +38,7 @@ class DetailedArticle extends Component {
         <p className="Topic">{topic}</p>
         <p className="Author">{author}</p>
         <p className="CreatedAt">{created_at}</p>
-        <button className="Delete">Delete</button>
+        {username === author && <button className="Delete">Delete</button>}
       </section>
     );
   }

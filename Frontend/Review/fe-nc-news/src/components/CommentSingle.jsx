@@ -1,7 +1,7 @@
 import '../css/CommentSingle.css';
 import React from 'react';
 
-const CommentSingle = ({ commentsData }) => {
+const CommentSingle = ({ commentsData, username, handleDeleteComment }) => {
   return commentsData.map(function(comment) {
     const { votes, body, author, created_at, comment_id } = comment;
     return (
@@ -11,7 +11,15 @@ const CommentSingle = ({ commentsData }) => {
         <p className="Info">
           {author} - {created_at}
         </p>
-        <button className="Delete">Delete</button>
+        {username === author && (
+          <button
+            id={comment_id}
+            onClick={handleDeleteComment}
+            className="Delete"
+          >
+            Delete
+          </button>
+        )}
       </section>
     );
   });

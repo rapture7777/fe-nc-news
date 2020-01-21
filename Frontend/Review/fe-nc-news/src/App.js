@@ -32,6 +32,7 @@ class App extends Component {
               <DetailedArticle
                 path="/articles/:article_id"
                 className="TopWindow"
+                username={username}
               />
             </Router>
             <Router className="MainList">
