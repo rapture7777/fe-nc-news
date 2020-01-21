@@ -16,7 +16,7 @@ exports.fetchDetailedArticle = article_id => {
 
 exports.fetchComments = article_id => {
   return axios.get(
-    `https://nc-news-asv.herokuapp.com/api/articles/${article_id}/comments?sort_by=votes`
+    `https://nc-news-asv.herokuapp.com/api/articles/${article_id}/comments?sort_by=created_at`
   );
 };
 

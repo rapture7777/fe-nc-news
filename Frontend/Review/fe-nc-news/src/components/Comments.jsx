@@ -7,7 +7,6 @@ import PostComment from './PostComment';
 class Comments extends Component {
   state = {
     commentsData: [],
-    commentPosted: false,
     commentDeleted: false
   };
 
@@ -20,24 +19,33 @@ class Comments extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { article_id } = this.props;
-    const { commentPosted, commentDeleted } = this.state;
+    const { commentDeleted } = this.state;
     if (
       article_id !== prevProps.article_id ||
-      commentPosted !== prevState.commentPosted ||
       commentDeleted !== prevState.commentDeleted
     ) {
       api.fetchComments(article_id).then(({ data: { comments } }) => {
         this.setState({
           commentsData: comments,
-          commentPosted: false,
           commentDeleted: false
         });
       });
     }
   }
 
-  handleNewComment = () => {
-    this.setState({ commentPosted: true });
+  handleNewComment = (username, body) => {
+    let newComment = {
+      votes: 0,
+      created_at: 'Just now',
+      author: username,
+      body: body
+    };
+    this.setState(currentState => {
+      return {
+        commentPosted: true,
+        commentsData: [newComment, ...currentState.commentsData]
+      };
+    });
   };
 
   handleDeleteComment = event => {
@@ -52,12 +60,16 @@ class Comments extends Component {
     const { username, article_id } = this.props;
     return (
       <section className="Comments">
+        <h5>Comments</h5>
         <section className="CommentSm">
           <CommentSingle
             commentsData={commentsData}
             username={username}
             handleDeleteComment={this.handleDeleteComment}
           />
+        </section>
+        <section className="PageBar">
+          <p>PageBar</p>
         </section>
         <section className="Post">
           <PostComment

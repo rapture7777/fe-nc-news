@@ -11,7 +11,7 @@ const CommentSingle = ({ commentsData, username, handleDeleteComment }) => {
         <p className="Info">
           {author} - {created_at}
         </p>
-        {username === author && (
+        {username === author && comment_id && (
           <button
             id={comment_id}
             onClick={handleDeleteComment}

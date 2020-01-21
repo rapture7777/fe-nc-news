@@ -16,10 +16,9 @@ class PostComment extends Component {
     event.preventDefault();
     const { article_id, username, handleNewComment } = this.props;
     const { body } = this.state;
+    handleNewComment(username, body);
     api.postComment(article_id, username, body).then(() => {
-      this.setState({ body: '' }, () => {
-        handleNewComment();
-      });
+      this.setState({ body: '' });
     });
   };
 
