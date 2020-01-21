@@ -1,15 +1,10 @@
 .Comments {
   display: grid;
-  grid-template-rows: 50px auto 100px 50px;
+  grid-template-rows: auto 100px 50px;
   grid-template-areas:
-    'Filters'
     'CommentSm'
     'Post'
     'PageBar';
-}
-
-.Filters {
-  grid-area: Filters;
 }
 
 .CommentSm {

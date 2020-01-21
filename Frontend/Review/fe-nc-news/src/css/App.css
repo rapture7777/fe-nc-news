@@ -1,7 +1,7 @@
 .App {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 50px auto 70vh;
+  grid-template-rows: 50px auto auto;
   grid-template-areas:
     'TopBar'
     'TopWindow'

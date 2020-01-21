@@ -36,7 +36,11 @@ class App extends Component {
             </Router>
             <Router className="MainList">
               <Articles path="/" className="MainList" />
-              <Comments path="/articles/:article_id" className="MainList" />
+              <Comments
+                path="/articles/:article_id"
+                className="MainList"
+                username={username}
+              />
             </Router>
           </>
         )}

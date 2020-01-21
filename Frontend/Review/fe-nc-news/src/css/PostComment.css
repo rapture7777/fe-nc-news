@@ -1,0 +1,33 @@
+.PostComment {
+  display: grid;
+  grid-template-rows: 20px auto;
+  grid-template-areas:
+    'Intro'
+    'Box';
+  padding: 5px;
+}
+
+.Text {
+  grid-area: Intro;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.Box {
+  grid-area: Box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Box input {
+  align-self: center;
+  min-width: 95vw;
+  min-height: auto;
+  border: 1px solid black;
+}
+
+.Box button {
+  align-self: center;
+  border: 1px solid black;
+}

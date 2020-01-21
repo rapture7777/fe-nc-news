@@ -19,3 +19,13 @@ exports.fetchComments = article_id => {
     `https://nc-news-asv.herokuapp.com/api/articles/${article_id}/comments`
   );
 };
+
+exports.postComment = (article_id, username, body) => {
+  return axios.post(
+    `https://nc-news-asv.herokuapp.com/api/articles/${article_id}/comments`,
+    {
+      username: username,
+      body: body
+    }
+  );
+};

@@ -8,7 +8,8 @@ import Filters from './Filters';
 class Articles extends Component {
   state = {
     articles: [],
-    topic: ''
+    topic: '',
+    sort_by: ''
   };
 
   componentDidMount() {
@@ -18,10 +19,10 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { topic } = this.state;
+    const { topic, sort_by } = this.state;
 
-    if (prevState.topic !== topic) {
-      let params = { params: { topic } };
+    if (prevState.topic !== topic || prevState.sort_by !== sort_by) {
+      let params = { params: { topic: topic, sort_by: sort_by } };
       api.fetchArticles(params).then(({ data: { articles } }) => {
         this.setState({ articles: articles });
       });
@@ -30,6 +31,7 @@ class Articles extends Component {
 
   handleChange = event => {
     const { id, value } = event.target;
+    console.log(id, value);
     this.setState({ [id]: value });
   };
 
@@ -37,7 +39,7 @@ class Articles extends Component {
     const { articles } = this.state;
     return (
       <main className="Articles">
-        <Filters handleChange={this.handleChange} />
+        <Filters handleArticlesChange={this.handleChange} />
         <section className="ArticlesSm">
           <ArticlesSm articles={articles} />
         </section>
