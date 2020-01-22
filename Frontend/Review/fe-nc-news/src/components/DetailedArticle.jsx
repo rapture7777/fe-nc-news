@@ -1,4 +1,5 @@
 import '../css/DetailedArticle.css';
+import '../css/Loader.css';
 import React, { Component } from 'react';
 import * as api from '../utils/api';
 import Vote from './Vote';
@@ -7,7 +8,7 @@ import DisplayError from './DisplayError';
 class DetailedArticle extends Component {
   state = {
     articleData: {},
-    isLoading: false,
+    isLoading: true,
     err: '',
     articleDeleted: false
   };
@@ -17,7 +18,7 @@ class DetailedArticle extends Component {
     api
       .fetchDetailedArticle(article_id)
       .then(({ data: { article } }) => {
-        this.setState({ articleData: article });
+        this.setState({ articleData: article, isLoading: false });
       })
       .catch(({ response: { data: { msg } } }) => this.setState({ err: msg }));
   }
@@ -58,34 +59,39 @@ class DetailedArticle extends Component {
         created_at
       },
       err,
-      articleDeleted
+      articleDeleted,
+      isLoading
     } = this.state;
     const { username } = this.props;
     return err ? (
       <DisplayError err={err} />
     ) : !articleDeleted ? (
-      <section className="DetailedArticle">
-        <p className="Title">
-          <b>{title}</b>
-        </p>
-        <Vote
-          name="articleVote"
-          className="Votes"
-          votes={votes}
-          id={article_id}
-        />
-        <p className="Body">{body}</p>
-        <p className="Info">
-          <b>
-            {topic} - {author} - {created_at}
-          </b>
-        </p>
-        {username === author && (
-          <button className="Delete" onClick={this.handleDeleteArticle}>
-            Delete
-          </button>
-        )}
-      </section>
+      !isLoading ? (
+        <section className="DetailedArticle">
+          <p className="Title">
+            <b>{title}</b>
+          </p>
+          <Vote
+            name="articleVote"
+            className="Votes"
+            votes={votes}
+            id={article_id}
+          />
+          <p className="Body">{body}</p>
+          <p className="Info">
+            <b>
+              {topic} - {author} - {created_at}
+            </b>
+          </p>
+          {username === author && (
+            <button className="Delete" onClick={this.handleDeleteArticle}>
+              Delete
+            </button>
+          )}
+        </section>
+      ) : (
+        <div class="DetailedArticle lds-hourglass"></div>
+      )
     ) : (
       <h3>Deleted!</h3>
     );

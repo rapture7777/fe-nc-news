@@ -20,8 +20,33 @@
   justify-content: left;
   padding-top: 10px;
   padding-bottom: 10px;
+  max-width: 100%;
 }
 
 .MainList {
   grid-area: MainList;
+}
+
+@media screen and (min-width: 800px) {
+  .TopWindow,
+  .MainList {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .TopWindow,
+  .MainList {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .TopWindow,
+  .MainList {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }

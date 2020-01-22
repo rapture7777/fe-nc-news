@@ -1,4 +1,5 @@
 import '../css/Comments.css';
+import '../css/Loader.css';
 import React, { Component } from 'react';
 import * as api from '../utils/api';
 import CommentSingle from './CommentSingle';
@@ -10,7 +11,7 @@ class Comments extends Component {
   state = {
     commentsData: [],
     commentDeleted: false,
-    isLoading: false,
+    isLoading: true,
     err: ''
   };
 
@@ -19,7 +20,7 @@ class Comments extends Component {
     api
       .fetchComments(article_id)
       .then(({ data: { comments } }) => {
-        this.setState({ commentsData: comments });
+        this.setState({ commentsData: comments, isLoading: false });
       })
       .catch(({ response: { data: { msg } } }) => this.setState({ err: msg }));
   }
@@ -70,11 +71,11 @@ class Comments extends Component {
   };
 
   render() {
-    const { commentsData, err } = this.state;
+    const { commentsData, err, isLoading } = this.state;
     const { username, article_id } = this.props;
     return err ? (
       <DisplayError err={err} />
-    ) : (
+    ) : !isLoading ? (
       <section className="Comments">
         <h5 className="Title">Comments</h5>
         <section className="CommentSm">
@@ -95,6 +96,8 @@ class Comments extends Component {
           />
         </section>
       </section>
+    ) : (
+      <div class="Comments lds-hourglass"></div>
     );
   }
 }

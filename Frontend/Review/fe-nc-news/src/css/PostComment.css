@@ -25,7 +25,7 @@
 
 .PostComment .Box input {
   align-self: center;
-  min-width: 95vw;
+  min-width: 95%;
   min-height: auto;
 }
 

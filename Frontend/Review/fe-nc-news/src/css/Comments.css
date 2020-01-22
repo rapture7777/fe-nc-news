@@ -1,11 +1,12 @@
 .Comments {
   display: grid;
-  grid-template-rows: 20px auto auto 50px;
+  justify-self: center;
+  grid-template-rows: 20px auto auto auto;
   grid-template-areas:
     'Title'
+    'Post'
     'CommentSm'
-    'PageBar'
-    'Post';
+    'PageBar';
 }
 
 .Comments .Title {

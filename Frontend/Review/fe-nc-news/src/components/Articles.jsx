@@ -1,4 +1,5 @@
 import '../css/Articles.css';
+import '../css/Loader.css';
 import * as api from '../utils/api';
 import React, { Component } from 'react';
 import ArticlesSm from './ArticlesSm';
@@ -11,14 +12,14 @@ class Articles extends Component {
     articles: [],
     topic: '',
     sort_by: '',
-    isLoading: false,
+    isLoading: true,
     err: '',
     showPost: false
   };
 
   componentDidMount() {
     api.fetchArticles().then(({ data: { articles } }) => {
-      this.setState({ articles: articles });
+      this.setState({ articles: articles, isLoading: false });
     });
   }
 
@@ -53,14 +54,18 @@ class Articles extends Component {
   };
 
   render() {
-    const { articles, showPost } = this.state;
+    const { articles, showPost, isLoading } = this.state;
     const { username } = this.props;
     return (
       <main className="Articles">
         <Filters handleArticlesChange={this.handleChange} />
-        <section className="ArticlesSm">
-          <ArticlesSm articles={articles} />
-        </section>
+        {!isLoading ? (
+          <section className="ArticlesSm">
+            <ArticlesSm articles={articles} />
+          </section>
+        ) : (
+          <div class="ArticlesSm lds-hourglass"></div>
+        )}
         <section className="PageBar">
           <PageBar />
         </section>
