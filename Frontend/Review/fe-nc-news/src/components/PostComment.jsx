@@ -29,7 +29,7 @@ class PostComment extends Component {
     return (
       <form className="PostComment" onSubmit={this.handleSubmit}>
         <p className="Text">
-          <b>Post a comment</b>
+          <b>Post Comment</b>
         </p>
         <label htmlFor="body" className="Box">
           <input

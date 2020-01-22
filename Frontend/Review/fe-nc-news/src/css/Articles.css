@@ -35,6 +35,10 @@
 
 .Articles .Post {
   grid-area: Post;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
   padding-top: 8px;
   padding-bottom: 8px;
 }

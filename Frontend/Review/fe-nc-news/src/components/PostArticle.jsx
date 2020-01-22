@@ -11,28 +11,23 @@ class PostArticle extends Component {
 
   handleChange = event => {
     const { id, value } = event.target;
-    this.setState({ [id]: value }, () => {
-      console.log(this.state[id]);
-    });
+    this.setState({ [id]: value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
     const { title, topic, body } = this.state;
-    const { username } = this.props;
+    const { username, handlePostedArticle } = this.props;
     if (title && topic && body) {
       api
         .postArticle(title, body, topic, username)
-        .then(({ data: { article } }) => console.log(article));
+        .then(({ data: { article } }) => handlePostedArticle(article));
     }
   };
 
   render() {
     return (
       <form className="PostArticle" onSubmit={this.handleSubmit}>
-        <p className="Header">
-          <b>Post an Article</b>
-        </p>
         <label htmlFor="title" className="Title">
           Title: <input type="text" id="title" onChange={this.handleChange} />
         </label>

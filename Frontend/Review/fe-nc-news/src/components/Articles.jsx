@@ -12,7 +12,8 @@ class Articles extends Component {
     topic: '',
     sort_by: '',
     isLoading: false,
-    err: ''
+    err: '',
+    showPost: false
   };
 
   componentDidMount() {
@@ -22,22 +23,37 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { topic, sort_by } = this.state;
-    if (prevState.topic !== topic || prevState.sort_by !== sort_by) {
+    const { topic, sort_by, articles } = this.state;
+    if (
+      prevState.topic !== topic ||
+      prevState.sort_by !== sort_by ||
+      prevState.articles.length !== articles.length
+    ) {
       api.fetchArticles(topic, sort_by).then(({ data: { articles } }) => {
-        this.setState({ articles: articles });
+        this.setState({ articles: articles, showPost: false });
       });
     }
   }
 
+  handlePostedArticle = article => {
+    this.setState(currentState => {
+      return { articles: [article, ...currentState.articles] };
+    });
+  };
+
   handleChange = event => {
     const { id, value } = event.target;
-    console.log(id, value);
     this.setState({ [id]: value });
   };
 
+  handleShowPost = event => {
+    this.setState(currentState => {
+      return { showPost: !currentState.showPost };
+    });
+  };
+
   render() {
-    const { articles } = this.state;
+    const { articles, showPost } = this.state;
     const { username } = this.props;
     return (
       <main className="Articles">
@@ -49,8 +65,16 @@ class Articles extends Component {
           <PageBar />
         </section>
         <section className="Post">
-          <button className="Post">Post Article</button>
-          <PostArticle className="Post" username={username} />
+          <button id="showPost" value={true} onClick={this.handleShowPost}>
+            <b>Post Article</b>
+          </button>
+          {showPost && (
+            <PostArticle
+              className="Post"
+              username={username}
+              handlePostedArticle={this.handlePostedArticle}
+            />
+          )}
         </section>
       </main>
     );

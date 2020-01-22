@@ -54,7 +54,6 @@ class Comments extends Component {
     };
     this.setState(currentState => {
       return {
-        commentPosted: true,
         commentsData: [newComment, ...currentState.commentsData]
       };
     });
