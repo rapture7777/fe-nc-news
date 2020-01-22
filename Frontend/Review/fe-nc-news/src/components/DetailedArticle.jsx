@@ -90,7 +90,7 @@ class DetailedArticle extends Component {
           )}
         </section>
       ) : (
-        <div class="DetailedArticle lds-hourglass"></div>
+        <div className="DetailedArticle lds-hourglass"></div>
       )
     ) : (
       <h3>Deleted!</h3>

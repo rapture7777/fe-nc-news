@@ -64,7 +64,7 @@ class Articles extends Component {
             <ArticlesSm articles={articles} />
           </section>
         ) : (
-          <div class="ArticlesSm lds-hourglass"></div>
+          <div className="ArticlesSm lds-hourglass"></div>
         )}
         <section className="PageBar">
           <PageBar />

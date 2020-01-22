@@ -97,7 +97,7 @@ class Comments extends Component {
         </section>
       </section>
     ) : (
-      <div class="Comments lds-hourglass"></div>
+      <div className="Comments lds-hourglass"></div>
     );
   }
 }
