@@ -1,6 +1,5 @@
 .Comments {
   display: grid;
-  justify-self: center;
   grid-template-rows: 20px auto auto auto;
   grid-template-areas:
     'Title'

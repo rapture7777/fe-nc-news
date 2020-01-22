@@ -32,13 +32,23 @@ class Vote extends Component {
     const { optimisticVoteCount } = this.state;
     return (
       <div className="Votes">
-        <button onClick={() => this.changeVote(1)}>+</button>
+        <span
+          className="square arrow up"
+          onClick={() => this.changeVote(1)}
+        ></span>
         {!isNaN(votes) ? (
-          <p>{votes + optimisticVoteCount}</p>
+          <p>
+            <b>{votes + optimisticVoteCount}</b>
+          </p>
         ) : (
           <p>Loading...</p>
         )}
-        <button onClick={() => this.changeVote(-1)}>-</button>
+        <span
+          className="icon square arrow down"
+          onClick={() => this.changeVote(-1)}
+        >
+          -
+        </span>
       </div>
     );
   }
