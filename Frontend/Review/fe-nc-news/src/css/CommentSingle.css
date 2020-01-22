@@ -2,29 +2,42 @@
   font-size: x-small;
   display: grid;
   grid-template-columns: 10vw 90vw;
-  grid-template-rows: 30px auto auto;
+  grid-template-rows: auto auto auto;
   grid-template-areas:
     'Votes Body'
     'Votes Body'
     'Delete Info';
   padding-bottom: 10px;
-  border: 1px solid black;
+  background-image: linear-gradient(
+    to top,
+    #cacaca,
+    #d7d7d7,
+    #e4e4e4,
+    #f2f2f2,
+    #ffffff
+  );
 }
 
-.Votes {
+.CommentSingle .Votes {
   grid-area: Votes;
 }
 
-.Body {
+.CommentSingle .Body {
   grid-area: Body;
   text-align: left;
+  padding-left: 0;
+  padding-right: 10px;
 }
 
-.Info {
+.CommentSingle .Info {
   grid-area: Info;
   text-align: left;
+  margin: 0;
+  font-size: 6pt;
 }
 
-.Delete {
+.CommentSingle .Delete {
   grid-area: Delete;
+  font-size: 8px;
+  word-wrap: break-word;
 }

@@ -6,10 +6,10 @@
     'ArticlesList';
 }
 
-.TopWindow {
+.Router .TopWindow {
   grid-area: TopWindow;
 }
 
-.ArticlesList {
+.Router .ArticlesList {
   grid-area: ArticlesList;
 }

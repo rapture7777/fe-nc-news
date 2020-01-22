@@ -17,7 +17,6 @@ class PostComment extends Component {
     const { article_id, username, handleNewComment } = this.props;
     const { body } = this.state;
     if (body !== '') {
-      this.setState({ triggerWarning: false });
       handleNewComment(username, body);
       api.postComment(article_id, username, body).then(() => {
         this.setState({ body: '' });
@@ -29,7 +28,9 @@ class PostComment extends Component {
     const { body } = this.state;
     return (
       <form className="PostComment" onSubmit={this.handleSubmit}>
-        <p className="Text">Post a comment:</p>
+        <p className="Text">
+          <b>Post a comment</b>
+        </p>
         <label htmlFor="body" className="Box">
           <input
             type="text"

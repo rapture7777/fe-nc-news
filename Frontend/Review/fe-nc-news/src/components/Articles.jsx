@@ -45,11 +45,12 @@ class Articles extends Component {
         <section className="ArticlesSm">
           <ArticlesSm articles={articles} />
         </section>
-        <section className="Post">
-          <PostArticle className="Post" username={username} />
-        </section>
         <section className="PageBar">
           <PageBar />
+        </section>
+        <section className="Post">
+          <button className="Post">Post Article</button>
+          <PostArticle className="Post" username={username} />
         </section>
       </main>
     );

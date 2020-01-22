@@ -1,44 +1,50 @@
 .DetailedArticle {
   display: grid;
   font-size: xx-small;
-  grid-template-columns: 80px 1fr;
-  grid-template-rows: 30px 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 10vw 1fr;
+  grid-template-rows: auto auto auto auto;
   grid-template-areas:
     'Votes Title'
     'Votes Body'
-    'Topic Body'
-    'Author Body'
-    'CreatedAt Body'
-    'Delete Body';
-  border: 1px solid black;
+    'Votes Body'
+    'Delete Info';
+  box-shadow: 0px 3px 3px 1px rgba(160, 142, 142, 0.49);
+  background-image: linear-gradient(
+    to top,
+    #cacaca,
+    #d7d7d7,
+    #e4e4e4,
+    #f2f2f2,
+    #ffffff
+  );
 }
 
-.Votes {
+.DetailedArticle .Votes {
   grid-area: Votes;
 }
 
-.Title {
+.DetailedArticle .Title {
   grid-area: Title;
+  font-size: 8pt;
 }
 
-.Body {
+.DetailedArticle .Body {
   grid-area: Body;
   font-size: xx-small;
+  text-align: left;
+  margin: 0;
+  padding: 0;
   padding-right: 10px;
 }
 
-.Topic {
-  grid-area: Topic;
+.DetailedArticle .Info {
+  grid-area: Info;
+  word-wrap: break-word;
+  text-align: left;
 }
 
-.Author {
-  grid-area: Author;
-}
-
-.CreateAt {
-  grid-area: CreateAt;
-}
-
-.Delete {
+.DetailedArticle .Delete {
   grid-area: Delete;
+  font-size: 6pt;
+  word-wrap: break-word;
 }

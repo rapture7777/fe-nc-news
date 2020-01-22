@@ -4,6 +4,7 @@ import * as api from '../utils/api';
 import CommentSingle from './CommentSingle';
 import PostComment from './PostComment';
 import DisplayError from './DisplayError';
+import PageBar from './PageBar';
 
 class Comments extends Component {
   state = {
@@ -76,7 +77,7 @@ class Comments extends Component {
       <DisplayError err={err} />
     ) : (
       <section className="Comments">
-        <h5>Comments</h5>
+        <h5 className="Title">Comments</h5>
         <section className="CommentSm">
           <CommentSingle
             commentsData={commentsData}
@@ -85,7 +86,7 @@ class Comments extends Component {
           />
         </section>
         <section className="PageBar">
-          <p>PageBar</p>
+          <PageBar />
         </section>
         <section className="Post">
           <PostComment

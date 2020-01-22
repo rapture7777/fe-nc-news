@@ -31,7 +31,7 @@ class PostArticle extends Component {
     return (
       <form className="PostArticle" onSubmit={this.handleSubmit}>
         <p className="Header">
-          <b>Post an Article (all fields required):</b>
+          <b>Post an Article</b>
         </p>
         <label htmlFor="title" className="Title">
           Title: <input type="text" id="title" onChange={this.handleChange} />

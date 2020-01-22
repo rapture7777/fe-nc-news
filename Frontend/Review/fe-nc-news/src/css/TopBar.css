@@ -13,7 +13,7 @@
   box-shadow: 0px 1px 6px 1px rgba(160, 142, 142, 0.49);
 }
 
-.Logo {
+.TopBar .Logo {
   grid-area: Logo;
   display: flex;
   flex-direction: column;
@@ -33,11 +33,11 @@
   color: navy;
 }
 
-.Middle {
+.TopBar .Middle {
   grid-area: Mid;
 }
 
-.User {
+.TopBar .User {
   grid-area: User;
   display: flex;
   flex-direction: column;

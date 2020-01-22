@@ -75,9 +75,11 @@ class DetailedArticle extends Component {
           id={article_id}
         />
         <p className="Body">{body}</p>
-        <p className="Topic">{topic}</p>
-        <p className="Author">{author}</p>
-        <p className="CreatedAt">{created_at}</p>
+        <p className="Info">
+          <b>
+            {topic} - {author} - {created_at}
+          </b>
+        </p>
         {username === author && (
           <button className="Delete" onClick={this.handleDeleteArticle}>
             Delete

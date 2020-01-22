@@ -1,33 +1,35 @@
 .PostComment {
   display: grid;
-  grid-template-rows: 20px auto;
+  grid-template-rows: auto auto;
   grid-template-areas:
     'Intro'
     'Box';
   padding: 5px;
+  box-shadow: 0px 3px 3px 1px rgba(160, 142, 142, 0.49);
 }
 
-.Text {
+.PostComment .Text {
   grid-area: Intro;
-  padding-left: 10px;
   margin: 0;
+  padding-bottom: 5px;
+  text-align: center;
+  font-size: 9pt;
 }
 
-.Box {
+.PostComment .Box {
   grid-area: Box;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.Box input {
+.PostComment .Box input {
   align-self: center;
   min-width: 95vw;
   min-height: auto;
-  border: 1px solid black;
 }
 
-.Box button {
+.PostComment .Box button {
   align-self: center;
-  border: 1px solid black;
+  border-radius: 5;
 }
