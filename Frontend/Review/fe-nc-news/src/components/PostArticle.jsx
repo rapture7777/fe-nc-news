@@ -30,16 +30,22 @@ class PostArticle extends Component {
   render() {
     return (
       <form className="PostArticle" onSubmit={this.handleSubmit}>
-        <p className="Header">Post an Article (all fields required):</p>
+        <p className="Header">
+          <b>Post an Article (all fields required):</b>
+        </p>
         <label htmlFor="title" className="Title">
           Title: <input type="text" id="title" onChange={this.handleChange} />
         </label>
-        <select id="topic" className="Topic" onChange={this.handleChange}>
-          <option value="">Select Topic</option>
-          <option value="coding">Coding</option>
-          <option value="cooking">Cooking</option>
-          <option value="football">Football</option>
-        </select>
+        <label htmlFor="topic">
+          {' '}
+          Topic:
+          <select id="topic" className="Topic" onChange={this.handleChange}>
+            <option value="">Select Topic</option>
+            <option value="coding">Coding</option>
+            <option value="cooking">Cooking</option>
+            <option value="football">Football</option>
+          </select>
+        </label>
         <label htmlFor="body" className="Body">
           Body: <input type="text" id="body" onChange={this.handleChange} />
         </label>

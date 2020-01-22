@@ -1,0 +1,10 @@
+.PageBarInner {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.PageBarInner p {
+  align-self: center;
+}

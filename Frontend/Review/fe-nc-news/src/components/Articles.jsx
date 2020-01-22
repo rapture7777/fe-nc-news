@@ -48,7 +48,9 @@ class Articles extends Component {
         <section className="Post">
           <PostArticle className="Post" username={username} />
         </section>
-        <PageBar />
+        <section className="PageBar">
+          <PageBar />
+        </section>
       </main>
     );
   }
