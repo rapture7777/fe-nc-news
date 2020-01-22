@@ -1,7 +1,7 @@
 .App {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 50px auto auto;
+  grid-template-rows: 30px auto auto;
   grid-template-areas:
     'TopBar'
     'TopWindow'
@@ -15,8 +15,11 @@
 .TopWindow {
   grid-area: TopWindow;
   display: flex;
+  align-content: center;
   flex-direction: column;
   justify-content: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .MainList {

@@ -8,10 +8,10 @@ const ArticlesSm = ({ articles }) => {
     const { article_id, title, topic, author, created_at, votes } = article;
     return (
       <section className="ArticlePreview" key={article_id}>
-        <Link to={`/articles/${article_id}`}>
-          <b>
-            <p className="Title">{title}</p>
-          </b>
+        <Link className="Title" to={`/articles/${article_id}`}>
+          <p className="Title">
+            <b>{title}</b>
+          </p>
         </Link>
         <p className="Info">
           {topic} - {author} - {created_at}

@@ -3,19 +3,24 @@ import React from 'react';
 const Filters = ({ handleArticlesChange }) => {
   return (
     <section className="Filters">
-      Choose Topic:{' '}
-      <select id="topic" onChange={handleArticlesChange}>
-        <option value="">All</option>
-        <option value="coding">Coding</option>
-        <option value="cooking">Cooking</option>
-        <option value="football">Football</option>
-      </select>
-      Sort-by:{' '}
-      <select id="sort_by" onChange={handleArticlesChange}>
-        <option value="">Most Recent</option>
-        <option value="comment_count">Most Commented</option>
-        <option value="votes">Most Popular</option>
-      </select>
+      <label htmlFor="topic">
+        Choose Topic:{' '}
+        <select id="topic" onChange={handleArticlesChange}>
+          <option value="">All</option>
+          <option value="coding">Coding</option>
+          <option value="cooking">Cooking</option>
+          <option value="football">Football</option>
+        </select>
+      </label>
+
+      <label htmlFor="sort_by">
+        Sort-by:{' '}
+        <select id="sort_by" onChange={handleArticlesChange}>
+          <option value="">Most Recent</option>
+          <option value="comment_count">Most Commented</option>
+          <option value="votes">Most Popular</option>
+        </select>
+      </label>
     </section>
   );
 };
