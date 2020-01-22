@@ -11,15 +11,28 @@ class PostArticle extends Component {
 
   handleChange = event => {
     const { id, value } = event.target;
-    this.setState({ [id]: value });
+    this.setState({ [id]: value }, () => {
+      console.log(this.state[id]);
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { title, topic, body } = this.state;
+    const { username } = this.props;
+    if (title && topic && body) {
+      api
+        .postArticle(title, body, topic, username)
+        .then(({ data: { article } }) => console.log(article));
+    }
   };
 
   render() {
     return (
-      <form className="PostArticle">
-        <p className="Header">Post an Article:</p>
-        <label htmlFor="Title" className="Title">
-          Title: <input type="text" id="Title" onChange={this.handleChange} />
+      <form className="PostArticle" onSubmit={this.handleSubmit}>
+        <p className="Header">Post an Article (all fields required):</p>
+        <label htmlFor="title" className="Title">
+          Title: <input type="text" id="title" onChange={this.handleChange} />
         </label>
         <select id="topic" className="Topic" onChange={this.handleChange}>
           <option value="">Select Topic</option>
@@ -27,8 +40,8 @@ class PostArticle extends Component {
           <option value="cooking">Cooking</option>
           <option value="football">Football</option>
         </select>
-        <label htmlFor="Body" className="Body">
-          Body: <input type="text" id="Body" onChange={this.handleChange} />
+        <label htmlFor="body" className="Body">
+          Body: <input type="text" id="body" onChange={this.handleChange} />
         </label>
         <button className="Submit">Submit</button>
       </form>

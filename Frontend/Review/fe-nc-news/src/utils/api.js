@@ -4,8 +4,14 @@ exports.fetchUsers = () => {
   return axios.get('https://nc-news-asv.herokuapp.com/api/users');
 };
 
-exports.fetchArticles = params => {
-  return axios.get('https://nc-news-asv.herokuapp.com/api/articles', params);
+exports.fetchArticles = (topic, sort_by) => {
+  const sort = sort_by || null;
+  return axios.get('https://nc-news-asv.herokuapp.com/api/articles', {
+    params: {
+      topic: topic,
+      sort_by: sort
+    }
+  });
 };
 
 exports.fetchDetailedArticle = article_id => {
@@ -47,5 +53,20 @@ exports.voteOnArticle = (article_id, num) => {
   return axios.patch(
     `https://nc-news-asv.herokuapp.com/api/articles/${article_id}`,
     { inc_votes: num }
+  );
+};
+
+exports.postArticle = (title, body, topic, username) => {
+  return axios.post('https://nc-news-asv.herokuapp.com/api/articles', {
+    title: title,
+    body: body,
+    topic: topic,
+    author: username
+  });
+};
+
+exports.deleteArticle = article_id => {
+  return axios.delete(
+    `https://nc-news-asv.herokuapp.com/api/articles/${article_id}`
   );
 };

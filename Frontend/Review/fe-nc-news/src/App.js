@@ -7,6 +7,7 @@ import Carousel from './components/Carousel';
 import Articles from './components/Articles';
 import DetailedArticle from './components/DetailedArticle';
 import Comments from './components/Comments';
+import DisplayError from './components/DisplayError';
 
 class App extends Component {
   state = {
@@ -34,9 +35,10 @@ class App extends Component {
                 className="TopWindow"
                 username={username}
               />
+              <DisplayError default />
             </Router>
             <Router className="MainList">
-              <Articles path="/" className="MainList" />
+              <Articles path="/" className="MainList" username={username} />
               <Comments
                 path="/articles/:article_id"
                 className="MainList"

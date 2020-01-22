@@ -3,18 +3,24 @@ import React, { Component } from 'react';
 import * as api from '../utils/api';
 import CommentSingle from './CommentSingle';
 import PostComment from './PostComment';
+import DisplayError from './DisplayError';
 
 class Comments extends Component {
   state = {
     commentsData: [],
-    commentDeleted: false
+    commentDeleted: false,
+    isLoading: false,
+    err: ''
   };
 
   componentDidMount() {
     const { article_id } = this.props;
-    api.fetchComments(article_id).then(({ data: { comments } }) => {
-      this.setState({ commentsData: comments });
-    });
+    api
+      .fetchComments(article_id)
+      .then(({ data: { comments } }) => {
+        this.setState({ commentsData: comments });
+      })
+      .catch(({ response: { data: { msg } } }) => this.setState({ err: msg }));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -24,12 +30,17 @@ class Comments extends Component {
       article_id !== prevProps.article_id ||
       commentDeleted !== prevState.commentDeleted
     ) {
-      api.fetchComments(article_id).then(({ data: { comments } }) => {
-        this.setState({
-          commentsData: comments,
-          commentDeleted: false
-        });
-      });
+      api
+        .fetchComments(article_id)
+        .then(({ data: { comments } }) => {
+          this.setState({
+            commentsData: comments,
+            commentDeleted: false
+          });
+        })
+        .catch(({ response: { data: { msg } } }) =>
+          this.setState({ err: msg })
+        );
     }
   }
 
@@ -50,15 +61,20 @@ class Comments extends Component {
 
   handleDeleteComment = event => {
     const { id } = event.target;
-    api.deleteComment(id).then(() => {
-      this.setState({ commentDeleted: true });
-    });
+    api
+      .deleteComment(id)
+      .then(() => {
+        this.setState({ commentDeleted: true });
+      })
+      .catch(({ response: { data: { msg } } }) => this.setState({ err: msg }));
   };
 
   render() {
-    const { commentsData } = this.state;
+    const { commentsData, err } = this.state;
     const { username, article_id } = this.props;
-    return (
+    return err ? (
+      <DisplayError err={err} />
+    ) : (
       <section className="Comments">
         <h5>Comments</h5>
         <section className="CommentSm">

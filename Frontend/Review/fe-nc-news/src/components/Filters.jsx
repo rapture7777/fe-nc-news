@@ -12,8 +12,7 @@ const Filters = ({ handleArticlesChange }) => {
       </select>
       Sort-by:{' '}
       <select id="sort_by" onChange={handleArticlesChange}>
-        <option value=""></option>
-        <option value="created_at">Most Recent</option>
+        <option value="">Most Recent</option>
         <option value="comment_count">Most Commented</option>
         <option value="votes">Most Popular</option>
       </select>

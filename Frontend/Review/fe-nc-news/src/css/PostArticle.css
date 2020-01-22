@@ -12,7 +12,7 @@
 .Header {
   grid-area: Header;
   margin: 0;
-  justify-self: center;
+  justify-self: left;
 }
 
 .Title {

@@ -10,7 +10,9 @@ class Articles extends Component {
   state = {
     articles: [],
     topic: '',
-    sort_by: ''
+    sort_by: '',
+    isLoading: false,
+    err: ''
   };
 
   componentDidMount() {
@@ -21,10 +23,8 @@ class Articles extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { topic, sort_by } = this.state;
-
     if (prevState.topic !== topic || prevState.sort_by !== sort_by) {
-      let params = { params: { topic: topic, sort_by: sort_by } };
-      api.fetchArticles(params).then(({ data: { articles } }) => {
+      api.fetchArticles(topic, sort_by).then(({ data: { articles } }) => {
         this.setState({ articles: articles });
       });
     }
@@ -38,6 +38,7 @@ class Articles extends Component {
 
   render() {
     const { articles } = this.state;
+    const { username } = this.props;
     return (
       <main className="Articles">
         <Filters handleArticlesChange={this.handleChange} />
@@ -45,7 +46,7 @@ class Articles extends Component {
           <ArticlesSm articles={articles} />
         </section>
         <section className="Post">
-          <PostArticle className="Post" />
+          <PostArticle className="Post" username={username} />
         </section>
         <PageBar />
       </main>
