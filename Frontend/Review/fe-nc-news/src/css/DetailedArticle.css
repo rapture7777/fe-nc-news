@@ -26,13 +26,13 @@
 
 .DetailedArticle .Title {
   grid-area: Title;
-  font-size: 8pt;
+  font-size: 10pt;
   padding-right: 10px;
 }
 
 .DetailedArticle .Body {
   grid-area: Body;
-  font-size: xx-small;
+  font-size: 8pt;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -56,4 +56,14 @@
 }
 
 .DetailedArticle .Deleted {
+  text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+  .DetailedArticle .Title,
+  .DetailedArticle .Votes,
+  .DetailedArticle .Info,
+  .DetailedArticle .Body {
+    font-size: 10pt;
+  }
 }

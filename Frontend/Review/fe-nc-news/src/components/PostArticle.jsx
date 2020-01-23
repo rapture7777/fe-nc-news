@@ -62,25 +62,6 @@ class PostArticle extends Component {
           Submit
         </Button>
       </Form>
-      // <form className="PostArticle" onSubmit={this.handleSubmit}>
-      //   <label htmlFor="title" className="Title">
-      //     Title: <input type="text" id="title" onChange={this.handleChange} />
-      //   </label>
-      //   <label htmlFor="topic">
-      //     <select id="topic" className="Topic" onChange={this.handleChange}>
-      //       <option value="">Select Topic</option>
-      //       <option value="coding">Coding</option>
-      //       <option value="cooking">Cooking</option>
-      //       <option value="football">Football</option>
-      //     </select>
-      //   </label>
-      //   <label htmlFor="body" className="Body">
-      //     Body: <input type="text" id="body" onChange={this.handleChange} />
-      //   </label>
-      //   <Button variant="success" className="Submit">
-      //     Submit
-      //   </Button>
-      // </form>
     );
   }
 }
