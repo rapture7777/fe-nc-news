@@ -14,6 +14,7 @@ class Articles extends Component {
     topic: '',
     sort_by: '',
     isLoading: true,
+    newPost: false,
     err: '',
     showPost: false,
     page: 1,
@@ -31,37 +32,45 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { topic, sort_by, articles, page } = this.state;
+    const { topic, sort_by, page, newPost } = this.state;
     if (
       prevState.topic !== topic ||
       prevState.sort_by !== sort_by ||
-      prevState.articles.length === articles.length - 1
+      prevState.newPost !== newPost
     ) {
-      api.fetchArticles(topic, sort_by).then(({ data: { articles } }) => {
-        this.setState(currentState => {
-          return {
-            articles: articles,
-            showPost: false,
-            page: 1
-          };
+      console.log('inside');
+      console.log(prevState);
+      api
+        .fetchArticles(topic, sort_by)
+        .then(({ data: { articles, total_count } }) => {
+          this.setState(currentState => {
+            return {
+              articles: articles,
+              totalArticles: total_count,
+              showPost: false,
+              newPost: false,
+              page: 1
+            };
+          });
         });
-      });
     }
     if (prevState.page !== page && prevState.page < page) {
-      api.fetchArticles(topic, sort_by, page).then(({ data: { articles } }) => {
-        this.setState(currentState => {
-          return {
-            articles: [...currentState.articles, ...articles],
-            showPost: false
-          };
+      api
+        .fetchArticles(topic, sort_by, page)
+        .then(({ data: { articles, total_count } }) => {
+          this.setState(currentState => {
+            return {
+              articles: [...currentState.articles, ...articles],
+              totalArticles: total_count
+            };
+          });
         });
-      });
     }
   }
 
   handlePostedArticle = article => {
     this.setState(currentState => {
-      return { articles: [article, ...currentState.articles] };
+      return { articles: [article, ...currentState.articles], newPost: true };
     });
   };
 
@@ -78,7 +87,7 @@ class Articles extends Component {
 
   handlePageChange = () => {
     const { page, totalArticles, limit } = this.state;
-    if (Math.round(totalArticles / limit) > page) {
+    if (Math.round(totalArticles / limit) >= page) {
       this.setState(currentState => {
         return { page: currentState.page + 1 };
       });

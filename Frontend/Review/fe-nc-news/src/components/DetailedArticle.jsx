@@ -85,7 +85,7 @@ class DetailedArticle extends Component {
           </p>
           {username === author && (
             <button className="Delete" onClick={this.handleDeleteArticle}>
-              Delete
+              <b>X</b>
             </button>
           )}
         </section>
@@ -93,7 +93,7 @@ class DetailedArticle extends Component {
         <div className="DetailedArticle lds-hourglass"></div>
       )
     ) : (
-      <h3>Deleted!</h3>
+      <h3 className="Deleted">Deleted!</h3>
     );
   }
 }
