@@ -56,7 +56,8 @@ class DetailedArticle extends Component {
         votes,
         topic,
         author,
-        created_at
+        created_at,
+        comment_count
       },
       err,
       articleDeleted,

@@ -85,9 +85,9 @@ class Comments extends Component {
             handleDeleteComment={this.handleDeleteComment}
           />
         </section>
-        <section className="PageBar">
+        {/* <section className="PageBar">
           <PageBar />
-        </section>
+        </section> */}
         <section className="Post">
           <PostComment
             username={username}
