@@ -1,6 +1,7 @@
 import '../css/PostComment.css';
 import React, { Component } from 'react';
 import * as api from '../utils/api';
+import { Button, Form } from 'react-bootstrap';
 
 class PostComment extends Component {
   state = {
@@ -27,20 +28,20 @@ class PostComment extends Component {
   render() {
     const { body } = this.state;
     return (
-      <form className="PostComment" onSubmit={this.handleSubmit}>
-        <p className="Text">
-          <b>Post Comment</b>
-        </p>
-        <label htmlFor="body" className="Box">
-          <input
+      <Form className="PostComment" onSubmit={this.handleSubmit}>
+        <Form.Label htmlFor="body" className="Box">
+          <Form.Control
             type="text"
             id="body"
             value={body}
             onChange={this.handleChange}
+            placeholder="Post Comment..."
           />
-          <button>Submit</button>
-        </label>
-      </form>
+          <Button type="submit" variant="success">
+            Submit
+          </Button>
+        </Form.Label>
+      </Form>
     );
   }
 }

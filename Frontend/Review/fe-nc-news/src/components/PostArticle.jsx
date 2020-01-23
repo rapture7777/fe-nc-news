@@ -1,7 +1,7 @@
 import '../css/PostArticle.css';
 import * as api from '../utils/api';
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 class PostArticle extends Component {
   state = {
@@ -28,27 +28,59 @@ class PostArticle extends Component {
 
   render() {
     return (
-      <form className="PostArticle" onSubmit={this.handleSubmit}>
-        <label htmlFor="title" className="Title">
-          Title: <input type="text" id="title" onChange={this.handleChange} />
-        </label>
-        <label htmlFor="topic">
-          {' '}
-          Topic:
-          <select id="topic" className="Topic" onChange={this.handleChange}>
+      <Form className="PostArticle" onSubmit={this.handleSubmit}>
+        <Form.Label htmlFor="title" className="Title">
+          <Form.Control
+            type="text"
+            id="title"
+            onChange={this.handleChange}
+            placeholder="Title"
+          />
+        </Form.Label>
+        <Form.Label htmlFor="topic">
+          <Form.Control
+            as="select"
+            id="topic"
+            className="Topic"
+            onChange={this.handleChange}
+          >
             <option value="">Select Topic</option>
             <option value="coding">Coding</option>
             <option value="cooking">Cooking</option>
             <option value="football">Football</option>
-          </select>
-        </label>
-        <label htmlFor="body" className="Body">
-          Body: <input type="text" id="body" onChange={this.handleChange} />
-        </label>
-        <Button variant="success" className="Submit">
+          </Form.Control>
+        </Form.Label>
+        <Form.Label htmlFor="body" className="Body">
+          <Form.Control
+            type="text"
+            id="body"
+            onChange={this.handleChange}
+            placeholder="Comment here..."
+          />
+        </Form.Label>
+        <Button variant="success" type="submit" className="Submit">
           Submit
         </Button>
-      </form>
+      </Form>
+      // <form className="PostArticle" onSubmit={this.handleSubmit}>
+      //   <label htmlFor="title" className="Title">
+      //     Title: <input type="text" id="title" onChange={this.handleChange} />
+      //   </label>
+      //   <label htmlFor="topic">
+      //     <select id="topic" className="Topic" onChange={this.handleChange}>
+      //       <option value="">Select Topic</option>
+      //       <option value="coding">Coding</option>
+      //       <option value="cooking">Cooking</option>
+      //       <option value="football">Football</option>
+      //     </select>
+      //   </label>
+      //   <label htmlFor="body" className="Body">
+      //     Body: <input type="text" id="body" onChange={this.handleChange} />
+      //   </label>
+      //   <Button variant="success" className="Submit">
+      //     Submit
+      //   </Button>
+      // </form>
     );
   }
 }
