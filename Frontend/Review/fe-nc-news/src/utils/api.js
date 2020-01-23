@@ -4,12 +4,13 @@ exports.fetchUsers = () => {
   return axios.get('https://nc-news-asv.herokuapp.com/api/users');
 };
 
-exports.fetchArticles = (topic, sort_by) => {
+exports.fetchArticles = (topic, sort_by, page) => {
   const sort = sort_by || null;
   return axios.get('https://nc-news-asv.herokuapp.com/api/articles', {
     params: {
       topic: topic,
-      sort_by: sort
+      sort_by: sort,
+      page: page
     }
   });
 };

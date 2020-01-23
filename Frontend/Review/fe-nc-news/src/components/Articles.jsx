@@ -10,28 +10,49 @@ import PostArticle from './PostArticle';
 class Articles extends Component {
   state = {
     articles: [],
+    totalArticles: null,
     topic: '',
     sort_by: '',
     isLoading: true,
     err: '',
-    showPost: false
+    showPost: false,
+    page: 1
   };
 
   componentDidMount() {
-    api.fetchArticles().then(({ data: { articles } }) => {
-      this.setState({ articles: articles, isLoading: false });
+    api.fetchArticles().then(({ data: { articles, total_count } }) => {
+      this.setState({
+        articles: articles,
+        totalArticles: total_count,
+        isLoading: false
+      });
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { topic, sort_by, articles } = this.state;
+    const { topic, sort_by, articles, page } = this.state;
     if (
       prevState.topic !== topic ||
       prevState.sort_by !== sort_by ||
-      prevState.articles.length !== articles.length
+      prevState.articles.length === articles.length - 1
     ) {
-      api.fetchArticles(topic, sort_by).then(({ data: { articles } }) => {
-        this.setState({ articles: articles, showPost: false });
+      api.fetchArticles(topic, sort_by, page).then(({ data: { articles } }) => {
+        this.setState(currentState => {
+          return {
+            articles: articles,
+            showPost: false
+          };
+        });
+      });
+    }
+    if (prevState.page !== page) {
+      api.fetchArticles(topic, sort_by, page).then(({ data: { articles } }) => {
+        this.setState(currentState => {
+          return {
+            articles: [...currentState.articles, ...articles],
+            showPost: false
+          };
+        });
       });
     }
   }
@@ -53,8 +74,14 @@ class Articles extends Component {
     });
   };
 
+  handlePageChange = () => {
+    this.setState(currentState => {
+      return { page: currentState.page + 1 };
+    });
+  };
+
   render() {
-    const { articles, showPost, isLoading } = this.state;
+    const { articles, showPost, isLoading, totalArticles } = this.state;
     const { username } = this.props;
     return (
       <main className="Articles">
@@ -66,9 +93,11 @@ class Articles extends Component {
         ) : (
           <div className="ArticlesSm lds-hourglass"></div>
         )}
-        <section className="PageBar">
-          <PageBar />
-        </section>
+        {totalArticles > articles.length && (
+          <section className="PageBar">
+            <PageBar handlePageChange={this.handlePageChange} />
+          </section>
+        )}
         <section className="Post">
           <button id="showPost" value={true} onClick={this.handleShowPost}>
             <b>Post Article</b>

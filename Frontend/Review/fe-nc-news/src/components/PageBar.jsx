@@ -1,11 +1,10 @@
 import '../css/PageBar.css';
-
 import React from 'react';
 
-const PageBar = () => {
+const PageBar = ({ handlePageChange }) => {
   return (
     <div className="PageBarInner">
-      <p>1 2 3 4</p>
+      <button onClick={handlePageChange}>More</button>
     </div>
   );
 };
