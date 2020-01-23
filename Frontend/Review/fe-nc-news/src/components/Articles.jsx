@@ -6,6 +6,7 @@ import ArticlesSm from './ArticlesSm';
 import PageBar from './PageBar';
 import Filters from './Filters';
 import PostArticle from './PostArticle';
+import { Button } from 'react-bootstrap';
 
 class Articles extends Component {
   state = {
@@ -113,9 +114,14 @@ class Articles extends Component {
           </section>
         )}
         <section className="Post">
-          <button id="showPost" value={true} onClick={this.handleShowPost}>
+          <Button
+            variant="secondary"
+            id="showPost"
+            value={true}
+            onClick={this.handleShowPost}
+          >
             <b>Post Article</b>
-          </button>
+          </Button>
           {showPost && (
             <PostArticle
               className="Post"

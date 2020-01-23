@@ -9,3 +9,11 @@
   align-self: center;
   margin: 0;
 }
+
+.PageBarInner .btn {
+  max-width: 100%;
+  align-self: center;
+  min-width: 100%;
+  justify-self: center;
+  padding-bottom: 5px;
+}

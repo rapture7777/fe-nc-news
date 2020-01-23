@@ -1,10 +1,13 @@
 import '../css/PageBar.css';
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 const PageBar = ({ handlePageChange }) => {
   return (
     <div className="PageBarInner">
-      <button onClick={handlePageChange}>More</button>
+      <Button variant="secondary" onClick={handlePageChange}>
+        <b>More</b>
+      </Button>
     </div>
   );
 };

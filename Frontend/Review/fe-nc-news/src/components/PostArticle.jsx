@@ -1,6 +1,7 @@
 import '../css/PostArticle.css';
 import * as api from '../utils/api';
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 
 class PostArticle extends Component {
   state = {
@@ -44,7 +45,9 @@ class PostArticle extends Component {
         <label htmlFor="body" className="Body">
           Body: <input type="text" id="body" onChange={this.handleChange} />
         </label>
-        <button className="Submit">Submit</button>
+        <Button variant="success" className="Submit">
+          Submit
+        </Button>
       </form>
     );
   }
