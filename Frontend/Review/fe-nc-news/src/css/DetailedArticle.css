@@ -39,8 +39,11 @@
 
 .DetailedArticle .Info {
   grid-area: Info;
+  padding-top: 10px;
+  padding-bottom: 10px;
   word-wrap: break-word;
   text-align: left;
+  margin: 0;
 }
 
 .DetailedArticle .Delete {

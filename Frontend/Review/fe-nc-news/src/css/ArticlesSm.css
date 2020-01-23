@@ -27,6 +27,7 @@
 .ArticlePreview .Title {
   grid-area: Title;
   text-align: left;
+  margin-top: 6px;
 }
 
 .ArticlePreview .Info {

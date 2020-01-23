@@ -26,6 +26,7 @@
 .CommentSingle .Body {
   grid-area: Body;
   text-align: left;
+  padding-top: 10px;
   padding-left: 0;
   margin-right: 10px;
 }

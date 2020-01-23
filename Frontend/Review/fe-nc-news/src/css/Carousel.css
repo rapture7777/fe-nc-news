@@ -1,13 +1,19 @@
 .Carousel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.Carousel img {
-  align-content: auto;
-  align-self: center;
+.Carousel .Item {
+  font-size: unset;
   max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.Carousel .Item img {
+  max-width: 100%;
+  max-height: 100%;
   box-shadow: 0px 2px 8px 2px rgba(160, 142, 142, 0.49);
+  overflow: hidden;
 }

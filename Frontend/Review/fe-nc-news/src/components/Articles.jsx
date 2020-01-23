@@ -16,7 +16,8 @@ class Articles extends Component {
     isLoading: true,
     err: '',
     showPost: false,
-    page: 1
+    page: 1,
+    limit: 10
   };
 
   componentDidMount() {
@@ -36,16 +37,17 @@ class Articles extends Component {
       prevState.sort_by !== sort_by ||
       prevState.articles.length === articles.length - 1
     ) {
-      api.fetchArticles(topic, sort_by, page).then(({ data: { articles } }) => {
+      api.fetchArticles(topic, sort_by).then(({ data: { articles } }) => {
         this.setState(currentState => {
           return {
             articles: articles,
-            showPost: false
+            showPost: false,
+            page: 1
           };
         });
       });
     }
-    if (prevState.page !== page) {
+    if (prevState.page !== page && prevState.page < page) {
       api.fetchArticles(topic, sort_by, page).then(({ data: { articles } }) => {
         this.setState(currentState => {
           return {
@@ -75,9 +77,12 @@ class Articles extends Component {
   };
 
   handlePageChange = () => {
-    this.setState(currentState => {
-      return { page: currentState.page + 1 };
-    });
+    const { page, totalArticles, limit } = this.state;
+    if (Math.round(totalArticles / limit) > page) {
+      this.setState(currentState => {
+        return { page: currentState.page + 1 };
+      });
+    }
   };
 
   render() {
