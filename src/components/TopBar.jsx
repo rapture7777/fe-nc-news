@@ -16,7 +16,7 @@ const TopBar = ({ username, loggedIn, logOut }) => {
         </p>
       )}
       <Button variant="danger" className="LogOut" onClick={logOut}>
-        Logout
+        <b>Log-out</b>
       </Button>
     </nav>
   );

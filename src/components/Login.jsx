@@ -16,7 +16,6 @@ class Login extends Component {
   }
 
   handleChange = event => {
-    console.log(event.target.value);
     const { value } = event.target;
     this.setState({ username: value });
   };
@@ -34,9 +33,12 @@ class Login extends Component {
     return (
       <Form className="Login" onSubmit={this.handleSubmit}>
         <p>
-          Welcome to ncNews.
-          <br />
-          Please select your username below to log in...
+          {' '}
+          <b>
+            Welcome to ncNews!
+            <br />
+            Please select a username below to log in.
+          </b>
         </p>
         <Form.Label htmlFor="username">
           <Form.Control
@@ -45,7 +47,7 @@ class Login extends Component {
             value={username}
             onChange={this.handleChange}
           >
-            <option>Select User</option>
+            <option>Select Username</option>
             {users.map(function(user) {
               return (
                 <option key={user.username} value={user.username}>
