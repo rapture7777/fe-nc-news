@@ -4,8 +4,12 @@ import { Form } from 'react-bootstrap';
 const Filters = ({ handleArticlesChange }) => {
   return (
     <Form className="Filters">
-      <Form.Label htmlFor="topic">
-        <Form.Control as="select" id="topic" onChange={handleArticlesChange}>
+      <Form.Label htmlFor="filterTopic">
+        <Form.Control
+          as="select"
+          id="filterTopic"
+          onChange={handleArticlesChange}
+        >
           <option value="">Topic: All</option>
           <option value="coding">Coding</option>
           <option value="cooking">Cooking</option>
