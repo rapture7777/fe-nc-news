@@ -1,9 +1,9 @@
 import '../css/DetailedArticle.css';
-import '../css/Loader.css';
 import React, { Component } from 'react';
 import * as api from '../utils/api';
 import Vote from './Vote';
 import DisplayError from './DisplayError';
+import { Button, Spinner } from 'react-bootstrap';
 
 class DetailedArticle extends Component {
   state = {
@@ -84,13 +84,17 @@ class DetailedArticle extends Component {
             </b>
           </p>
           {username === author && (
-            <button className="Delete" onClick={this.handleDeleteArticle}>
+            <Button
+              variant="danger"
+              className="Delete"
+              onClick={this.handleDeleteArticle}
+            >
               <b>X</b>
-            </button>
+            </Button>
           )}
         </section>
       ) : (
-        <div className="DetailedArticle lds-hourglass"></div>
+        <Spinner animation="border" variant="secondary" className="Loader" />
       )
     ) : (
       <h3 className="Deleted">Deleted!</h3>

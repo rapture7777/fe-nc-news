@@ -1,6 +1,7 @@
 import '../css/CommentSingle.css';
 import React from 'react';
 import Vote from './Vote';
+import { Button } from 'react-bootstrap';
 
 const CommentSingle = ({ commentsData, username, handleDeleteComment }) => {
   return commentsData.map(function(comment) {
@@ -13,13 +14,13 @@ const CommentSingle = ({ commentsData, username, handleDeleteComment }) => {
           {author} - {created_at}
         </p>
         {username === author && comment_id && (
-          <button
-            id={comment_id}
-            onClick={handleDeleteComment}
+          <Button
+            variant="danger"
+            onClick={() => handleDeleteComment(comment_id)}
             className="Delete"
           >
-            Delete
-          </button>
+            <b>X</b>
+          </Button>
         )}
       </section>
     );

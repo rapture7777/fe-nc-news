@@ -1,12 +1,11 @@
 import '../css/Articles.css';
-import '../css/Loader.css';
 import * as api from '../utils/api';
 import React, { Component } from 'react';
 import ArticlesSm from './ArticlesSm';
 import PageBar from './PageBar';
 import Filters from './Filters';
 import PostArticle from './PostArticle';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 
 class Articles extends Component {
   state = {
@@ -106,7 +105,7 @@ class Articles extends Component {
             <ArticlesSm articles={articles} />
           </section>
         ) : (
-          <div className="ArticlesSm lds-hourglass"></div>
+          <Spinner animation="border" variant="secondary" className="Loader" />
         )}
         {totalArticles > articles.length && (
           <section className="PageBar">

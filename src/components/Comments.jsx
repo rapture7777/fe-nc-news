@@ -1,11 +1,10 @@
 import '../css/Comments.css';
-import '../css/Loader.css';
 import React, { Component } from 'react';
 import * as api from '../utils/api';
 import CommentSingle from './CommentSingle';
 import PostComment from './PostComment';
 import DisplayError from './DisplayError';
-// import PageBar from './PageBar';
+import { Spinner } from 'react-bootstrap';
 
 class Comments extends Component {
   state = {
@@ -48,7 +47,7 @@ class Comments extends Component {
 
   handleNewComment = (username, body) => {
     let newComment = {
-      votes: 0,
+      votes: 1,
       created_at: 'Just now',
       author: username,
       body: body
@@ -60,8 +59,7 @@ class Comments extends Component {
     });
   };
 
-  handleDeleteComment = event => {
-    const { id } = event.target;
+  handleDeleteComment = id => {
     api
       .deleteComment(id)
       .then(() => {
@@ -85,9 +83,6 @@ class Comments extends Component {
             handleDeleteComment={this.handleDeleteComment}
           />
         </section>
-        {/* <section className="PageBar">
-          <PageBar />
-        </section> */}
         <section className="Post">
           <PostComment
             username={username}
@@ -97,7 +92,7 @@ class Comments extends Component {
         </section>
       </section>
     ) : (
-      <div className="Comments lds-hourglass"></div>
+      <Spinner animation="border" variant="secondary" className="Loader" />
     );
   }
 }
