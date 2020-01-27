@@ -36,6 +36,7 @@ class PostComment extends Component {
             value={body}
             onChange={this.handleChange}
             placeholder="Post Comment..."
+            required
           />
           <Button type="submit" variant="success">
             Submit
