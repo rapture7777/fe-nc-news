@@ -1,14 +1,14 @@
-# NC News Front-End Project
+# NC News Front-end Project
 
-This is the NC Front-End Review Project. It's a simple reddit style news website built using React as part of the final assessment for the Front-End module at Northcoders. The project uses the Back-End created in a similar previous project which can be found here - [https://github.com/rapture7777/be-nc-news]
+This is the NC Front-end Review Project. It's a simple reddit style news website built using React as part of the final assessment for the Front-end module at Northcoders. The project uses the Back-end created in a previous project which can be found [here](https://github.com/rapture7777/be-nc-news).
 
-## Getting Started
+# Getting Started
 
-In order to get a copy of this project running on your system for testing or development please follow the link below.
+In order to get a copy of this project running on your system for testing or development please follow [this link](https://github.com/rapture7777/fe-nc-news) to the GitHub repo and clone or download. Then simply follow the steps to install the prerequisites below and start the app.
 
-A live deployment can be accessed here - INSERT LINK
+A live deployment can be accessed [here](https://asvncnews.netlify.com/).
 
-### Prerequisites
+# Prerequisites
 
 The project has the following dependencies -
 
@@ -21,9 +21,9 @@ The project has the following dependencies -
 
 To run the project after cloning, please use `npm-i` and then `npm start` to view in a local setting.
 
-## Built With
+# Built With
 
-nc-news has been built with -
+The project was built using -
 
 - `React`
 - `React-Bootstrap`
@@ -31,6 +31,6 @@ nc-news has been built with -
 - `HTML5`
 - `CSS`
 
-## Authors
+# Authors
 
-**Adam** - [rapture7777](https://github.com/rapture7777)
+**Adam Valentine** - [rapture7777](https://github.com/rapture7777)
