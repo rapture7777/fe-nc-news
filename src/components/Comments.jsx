@@ -46,8 +46,9 @@ class Comments extends Component {
       api
         .fetchComments(article_id)
         .then(({ data: { comments } }) => {
+          let moddedComments = this.commentsFormat(comments);
           this.setState({
-            commentsData: comments,
+            commentsData: moddedComments,
             commentDeleted: false
           });
         })

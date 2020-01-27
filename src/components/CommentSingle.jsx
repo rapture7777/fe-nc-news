@@ -7,7 +7,10 @@ const CommentSingle = ({ commentsData, username, handleDeleteComment }) => {
   return commentsData.map(function(comment) {
     const { votes, body, author, created_at, comment_id } = comment;
     return (
-      <section className="CommentSingle" key={comment_id}>
+      <section
+        className="CommentSingle"
+        key={comment_id || `optimisticRender${Math.random()}`}
+      >
         <Vote name="commentVote" id={comment_id} votes={votes} />
         <p className="Body">{body}</p>
         <p className="Info">

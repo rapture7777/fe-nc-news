@@ -60,14 +60,13 @@ class Articles extends Component {
       api
         .fetchArticles(topic, sort_by)
         .then(({ data: { articles, total_count } }) => {
-          this.setState(currentState => {
-            return {
-              articles: articles,
-              totalArticles: total_count,
-              showPost: false,
-              newPost: false,
-              page: 1
-            };
+          let moddedArticles = this.articlesFormat(articles);
+          this.setState({
+            articles: moddedArticles,
+            totalArticles: total_count,
+            showPost: false,
+            newPost: false,
+            page: 1
           });
         });
     }
@@ -96,7 +95,7 @@ class Articles extends Component {
     this.setState({ [id]: value });
   };
 
-  handleShowPost = event => {
+  handleShowPost = () => {
     this.setState(currentState => {
       return { showPost: !currentState.showPost };
     });
