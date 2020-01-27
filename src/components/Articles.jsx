@@ -74,9 +74,10 @@ class Articles extends Component {
       api
         .fetchArticles(topic, sort_by, page)
         .then(({ data: { articles, total_count } }) => {
+          let moddedArticles = this.articlesFormat(articles);
           this.setState(currentState => {
             return {
-              articles: [...currentState.articles, ...articles],
+              articles: [...currentState.articles, ...moddedArticles],
               totalArticles: total_count
             };
           });

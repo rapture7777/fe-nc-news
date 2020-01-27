@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import '../css/Login.css';
 import * as api from '../utils/api.js';
+import { Form, Button } from 'react-bootstrap';
 
 class Login extends Component {
   state = {
     username: '',
-    invalidUsername: false
+    users: []
   };
 
+  componentDidMount() {
+    api.fetchUsers().then(({ data: { users } }) => {
+      this.setState({ users });
+    });
+  }
+
   handleChange = event => {
+    console.log(event.target.value);
     const { value } = event.target;
     this.setState({ username: value });
   };
@@ -17,38 +25,42 @@ class Login extends Component {
     event.preventDefault();
     const { username } = this.state;
     const { loginSuccessful } = this.props;
-    api.fetchUsers().then(({ data: { users } }) => {
-      const usernameArr = users.map(user => user.username);
-      if (usernameArr.includes(username)) {
-        this.setState({ invalidUsername: false });
-        loginSuccessful(username);
-      } else {
-        this.setState({ invalidUsername: true });
-      }
-    });
+    loginSuccessful(username);
   };
 
   render() {
-    const { username, invalidUsername } = this.state;
+    const { username, users } = this.state;
 
     return (
-      <>
-        <form className="Login" onSubmit={this.handleSubmit}>
-          <p>Enter your username:</p>
-          <label htmlFor="username">
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label htmlFor="submit">
-            <button id="submit">Login</button>
-          </label>
-          {invalidUsername && <h3>Invalid Username, please try again!</h3>}
-        </form>
-      </>
+      <Form className="Login" onSubmit={this.handleSubmit}>
+        <p>
+          Welcome to ncNews.
+          <br />
+          Please select your username below to log in...
+        </p>
+        <Form.Label htmlFor="username">
+          <Form.Control
+            as="select"
+            id="username"
+            value={username}
+            onChange={this.handleChange}
+          >
+            <option>Select User</option>
+            {users.map(function(user) {
+              return (
+                <option key={user.username} value={user.username}>
+                  {user.username}
+                </option>
+              );
+            })}
+          </Form.Control>
+        </Form.Label>
+        <Form.Label htmlFor="submit">
+          <Button variant="secondary" id="submit" type="submit">
+            Login
+          </Button>
+        </Form.Label>
+      </Form>
     );
   }
 }

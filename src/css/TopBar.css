@@ -1,7 +1,7 @@
 .TopBar {
   display: grid;
-  grid-template-columns: 100px 1fr 100px;
-  grid-template-areas: 'Logo Mid User';
+  grid-template-columns: 100px 1fr 100px 50px;
+  grid-template-areas: 'Logo Mid User LogOut';
   background-image: linear-gradient(
     to top,
     #cacaca,
@@ -44,4 +44,17 @@
   justify-content: center;
   text-align: center;
   text-shadow: 0px 1px 2px #adadad;
+}
+
+.TopBar .LogOut {
+  grid-area: LogOut;
+  font-size: 6pt;
+  padding: 2px;
+  max-width: 75%;
+  max-height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  box-shadow: 0px 3px 3px 1px rgba(160, 142, 142, 0.49);
 }

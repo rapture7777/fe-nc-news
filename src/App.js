@@ -11,19 +11,34 @@ import DisplayError from './components/DisplayError';
 
 class App extends Component {
   state = {
-    username: 'grumpy19',
-    loggedIn: true
+    username: '',
+    loggedIn: false
   };
 
+  componentDidMount() {
+    if (localStorage.getItem('username')) {
+      const username = localStorage.getItem('username');
+      this.setState({ username: username, loggedIn: true });
+    }
+  }
+
   loginSuccessful = username => {
-    this.setState({ username: username, loggedIn: true });
+    this.setState({ username: username, loggedIn: true }, () => {
+      localStorage.setItem('username', username);
+    });
+  };
+
+  logOut = () => {
+    this.setState({ username: '', loggedIn: false }, () => {
+      localStorage.clear();
+    });
   };
 
   render() {
     const { username, loggedIn } = this.state;
     return (
       <main className="App">
-        <TopBar username={username} loggedIn={loggedIn} />
+        <TopBar logOut={this.logOut} username={username} loggedIn={loggedIn} />
         {!loggedIn ? (
           <Login className="Router" loginSuccessful={this.loginSuccessful} />
         ) : (
