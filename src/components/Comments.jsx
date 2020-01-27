@@ -14,12 +14,24 @@ class Comments extends Component {
     err: ''
   };
 
+  commentsFormat = data => {
+    return data.map(function(comment) {
+      let newComment = { ...comment };
+      newComment.created_at = `${newComment.created_at.slice(
+        0,
+        10
+      )} @ ${newComment.created_at.slice(12, 16)}`;
+      return newComment;
+    });
+  };
+
   componentDidMount() {
     const { article_id } = this.props;
     api
       .fetchComments(article_id)
       .then(({ data: { comments } }) => {
-        this.setState({ commentsData: comments, isLoading: false });
+        let moddedComments = this.commentsFormat(comments);
+        this.setState({ commentsData: moddedComments, isLoading: false });
       })
       .catch(({ response: { data: { msg } } }) => this.setState({ err: msg }));
   }

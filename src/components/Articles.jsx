@@ -21,10 +21,29 @@ class Articles extends Component {
     limit: 10
   };
 
+  articlesFormat = data => {
+    return data.map(function(article) {
+      let newArticle = {};
+      newArticle.article_id = article.article_id;
+      newArticle.title = article.title;
+      newArticle.topic =
+        article.topic.slice(0, 1).toUpperCase() +
+        article.topic.slice(1, article.topic.length);
+      newArticle.author = article.author;
+      newArticle.created_at = `${article.created_at.slice(
+        0,
+        10
+      )} @ ${article.created_at.slice(12, 16)}`;
+      newArticle.votes = article.votes;
+      return newArticle;
+    });
+  };
+
   componentDidMount() {
     api.fetchArticles().then(({ data: { articles, total_count } }) => {
+      let moddedArticles = this.articlesFormat(articles);
       this.setState({
-        articles: articles,
+        articles: moddedArticles,
         totalArticles: total_count,
         isLoading: false
       });
@@ -38,8 +57,6 @@ class Articles extends Component {
       prevState.sort_by !== sort_by ||
       prevState.newPost !== newPost
     ) {
-      console.log('inside');
-      console.log(prevState);
       api
         .fetchArticles(topic, sort_by)
         .then(({ data: { articles, total_count } }) => {

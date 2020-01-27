@@ -13,12 +13,25 @@ class DetailedArticle extends Component {
     articleDeleted: false
   };
 
+  detailedArticleFormat = data => {
+    let newArticle = { ...data };
+    newArticle.topic =
+      newArticle.topic.slice(0, 1).toUpperCase() +
+      newArticle.topic.slice(1, newArticle.topic.length);
+    newArticle.created_at = `${newArticle.created_at.slice(
+      0,
+      10
+    )} @ ${newArticle.created_at.slice(12, 16)}`;
+    return newArticle;
+  };
+
   componentDidMount() {
     const { article_id } = this.props;
     api
       .fetchDetailedArticle(article_id)
       .then(({ data: { article } }) => {
-        this.setState({ articleData: article, isLoading: false });
+        let moddedArticle = this.detailedArticleFormat(article);
+        this.setState({ articleData: moddedArticle, isLoading: false });
       })
       .catch(({ response: { data: { msg } } }) => this.setState({ err: msg }));
   }

@@ -11,7 +11,9 @@ const CommentSingle = ({ commentsData, username, handleDeleteComment }) => {
         <Vote name="commentVote" id={comment_id} votes={votes} />
         <p className="Body">{body}</p>
         <p className="Info">
-          {author} - {created_at}
+          <b>
+            {author} - {created_at}
+          </b>
         </p>
         {username === author && comment_id && (
           <Button
