@@ -28,6 +28,7 @@
   grid-area: Title;
   font-size: 10pt;
   padding-right: 10px;
+  padding-top: 10px;
 }
 
 .DetailedArticle .Body {

@@ -9,7 +9,11 @@ const TopBar = ({ username, loggedIn }) => {
       <Link className="Logo" to="/">
         <img src={logo} alt="ncnews logo" />
       </Link>
-      {loggedIn && <p className="User">{username}</p>}
+      {loggedIn && (
+        <p className="User">
+          <b>{username}</b>
+        </p>
+      )}
     </nav>
   );
 };

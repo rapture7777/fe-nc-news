@@ -5,7 +5,7 @@ import * as api from '../utils/api';
 import CommentSingle from './CommentSingle';
 import PostComment from './PostComment';
 import DisplayError from './DisplayError';
-import PageBar from './PageBar';
+// import PageBar from './PageBar';
 
 class Comments extends Component {
   state = {

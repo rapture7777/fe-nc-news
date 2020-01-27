@@ -17,6 +17,8 @@
     #ffffff
   );
   border-radius: 3px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .CommentSingle .Votes {

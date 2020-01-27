@@ -6,7 +6,7 @@
     'Post'
     'CommentSm'
     'PageBar';
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .Comments .Title {
@@ -15,7 +15,7 @@
   align-self: center;
   justify-self: center;
   padding-bottom: 5px;
-  text-shadow: slategray;
+  text-shadow: 0px 1px 2px #adadad;
 }
 
 .CommentSm {
@@ -25,16 +25,20 @@
   justify-content: center;
   box-shadow: 0px 3px 3px 1px rgba(160, 142, 142, 0.49);
   border-radius: 7px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .Comments .Post {
   grid-area: Post;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .Comments .PageBar {
   grid-area: PageBar;
   padding-top: 4px;
-  padding-bottom: 0;
+  padding-bottom: 2px;
   box-shadow: 0px 3px 6px 1px rgba(160, 142, 142, 0.49);
   border-radius: 4px;
 }

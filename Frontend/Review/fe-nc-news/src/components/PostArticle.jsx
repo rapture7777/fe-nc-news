@@ -35,6 +35,7 @@ class PostArticle extends Component {
             id="title"
             onChange={this.handleChange}
             placeholder="Title"
+            required
           />
         </Form.Label>
         <Form.Label htmlFor="topic">
@@ -43,6 +44,7 @@ class PostArticle extends Component {
             id="topic"
             className="Topic"
             onChange={this.handleChange}
+            required
           >
             <option value="">Select Topic</option>
             <option value="coding">Coding</option>
@@ -56,6 +58,7 @@ class PostArticle extends Component {
             id="body"
             onChange={this.handleChange}
             placeholder="Comment here..."
+            required
           />
         </Form.Label>
         <Button variant="success" type="submit" className="Submit">
